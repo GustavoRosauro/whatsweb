@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Conversa</title>
+</head>
+<style>
+    .verde{
+        background-color: green;
+    }
+</style>
+<body>
+    <div ng-app="ConversaApp" ng-controller="ConverController">
+        <div ng-repeat="dados in lista">
+            <center>
+            <h1>Conversa</h1>
+        </center>
+        <div class="row">
+            <div class="col-md-5" style="margin-top: 5%">
+            <input ng-model="dados.id" value={{dados.id}} hidden>
+            <input class="form-control" ng-model="dados.valor"/>
+            <br>
+            <br>
+            <input type="button" ng-click="Envia(dados)" value="Enviar" class="btn btn-success"/>
+            <br>
+        </div>
+        <div class="col-md-6">
+            <img src="https://imagepng.org/wp-content/uploads/2017/08/WhatsApp-icone.png" height="160">
+        </div>
+    </div>
+            <div id = "cor" class="col-md-12" style="margin-top: 2% ">
+            <br>{{conversas}}
+        </div><br>  
+        </div>
+    </div>
+    <script>
+        let i = 0;
+        let app = angular.module('ConversaApp', []);
+        app.controller("ConverController", ($scope, $http) => {
+            window.setInterval(function(){
+            if(i === 0){
+            $scope.conversas = "";
+            var vars = {};
+            i= 1;
+            var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (m, key, value) {
+                vars[key] = value;
+            })
+            let valor = parts.split("/")[4];
+            $scope.lista = [{"id":valor,"valor":""}]
+            $scope.Envia = function(dados){
+                $http({
+                    method:"get",
+                    url:"/Inserir/"+dados.valor+"&"+dados.id
+                }).then(()=>{
+                   
+                })
+                
+            }
+        }
+                        $http({
+            method:"get",
+            url:"/SELECIONAR"
+            }).then((d)=>{
+            let div = document.getElementById('cor')
+            div.innerHTML = "";
+            $scope.conversas = "";
+            angular.forEach(d.data,(element,i) => {
+            $scope.conversas = element.MENSAGEM;
+            let div = document.getElementById('cor')
+            let id =  parseInt($scope.lista[0].id)
+            if(element.ID_USUARIO === 1)
+            {
+                $scope.conversas += "  ";
+                div.innerHTML +="<div style='background-color:#A9F5F2'>" +$scope.conversas+"</div><br>"
+            }else{
+                $scope.conversas += "     ";
+                div.innerHTML += "<div style='background-color:#F5A9F2'>"+$scope.conversas+ "</div><br>"
+            }
+            // if(element.ID === id){
+            //     let div = document.getElementById('cor');
+            //     div.classList.add("verde");
+            // }
+            },this);
+            })
+    },3000)
+        })
+        </script>
+</body>
+
+</html>
