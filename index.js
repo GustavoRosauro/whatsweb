@@ -40,7 +40,7 @@ app.get("/",(req,res)=>{
     })
 });
 
-server.listen(5000,()=>{console.log("rodando na porta 5000")});
+server.listen(porta,()=>{console.log("rodando na porta 5000")});
 
 
 app.get('/Valida/:login&:senha',(req,res)=>{
