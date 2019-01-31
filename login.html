@@ -4,26 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <title>Login</title>
 </head>
 <body>
     <div ng-app="LoginApp" ng-Controller="LoginController">
-    <center><h1>Login</h1>
-    <div class="col-md-5" style="margin-top: 5%">
-            <label>Login</label>
-            <input class="form-control" type="text" ng-model="dados.login"/>
-            <label>Senha</label>
-            <input class="form-control" type="password" ng-model="dados.senha"/>
-            <br>
-            <br>
-            <input type="button" class="btn btn-success" value="Login" ng-click="enviaDados(dados)">
-            
-        </div>
-    </center>
-    <script>
-        let app = angular.module("LoginApp",[]);
+        <center><h1>Login</h1>
+            <div class="col-md-5" style="margin-top: 5%">
+                    <label>Login</label>
+                    <input class="form-control" type="text" ng-model="dados.login"/>
+                    <label>Senha</label>
+                    <input class="form-control" type="password" ng-model="dados.senha"/>
+                    <br>
+                    <br>
+                    <input type="button" class="btn btn-success" value="Login" ng-click="enviaDados(dados)">
+                    
+                </div>
+            </center>
+            <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+            <script>
+                let app = angular.module("LoginApp",[]);
 
 app.controller("LoginController",($scope,$http)=>{
     $scope.enviaDados = (dados)=>{
@@ -36,7 +36,7 @@ app.controller("LoginController",($scope,$http)=>{
         })
     }
 })
-    </script>
+</script>
 </div>
 </body>
 </html>
