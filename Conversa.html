@@ -8,6 +8,26 @@
     crossorigin="anonymous">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Conversa</title>
+    <style>
+        .col-md-6 img{
+            margin-top:-6%;
+            margin-left: 90% ;
+            border-radius: 50%;
+        }
+        .col-md-5 input{
+            border-radius: 20px 20px;
+        }
+        .conversa{
+            border-radius: 20px 20px
+        }
+        @media only screen and (max-width: 600px){
+            .col-md-6 img{
+            margin-top:-15%;
+            margin-left: 40% ;
+            border-radius: 50%;
+        }   
+        }
+    </style>
 </head>
 <style>
     .verde{
@@ -21,7 +41,7 @@
                 <h1>Conversa</h1>
             </center>
             <div class="row">
-                <div class="col-md-5" style="margin-top: 5%">
+                <div class="col-md-5" style="margin-top: 2%">
                         <input ng-model="dados.id" value={{dados.id}} hidden>
                         <input class="form-control" ng-model="dados.valor"/>
                         <br>
@@ -30,7 +50,7 @@
                         <br>
                     </div>
                     <div class="col-md-6">
-                        <img src="https://imagepng.org/wp-content/uploads/2017/08/WhatsApp-icone.png" height="160">
+                        <img src="https://scontent.fbnu4-1.fna.fbcdn.net/v/t1.0-9/47219453_1930537777034914_4785511629888421888_n.jpg?_nc_cat=109&_nc_ht=scontent.fbnu4-1.fna&oh=b7d9ebbe3c303a6a567b1aabf268cf1d&oe=5CBB9086" height="160">
                     </div>
                 </div>
                 <div id = "cor" class="col-md-12" style="margin-top: 2% ">
@@ -77,10 +97,10 @@
                                 if(element.ID_USUARIO === 1)
                                 {
                 $scope.conversas += "  ";
-                div.innerHTML +="<div style='background-color:#A9F5F2'>" +$scope.conversas+"</div><br>"
+                div.innerHTML +="<div class='conversa' style='background-color:#A9F5F2'>" +$scope.conversas+"</div><br>"
             }else{
                 $scope.conversas += "     ";
-                div.innerHTML += "<div style='background-color:#F5A9F2'>"+$scope.conversas+ "</div><br>"
+                div.innerHTML += "<div class='conversa' style='background-color:#F5A9F2'>"+$scope.conversas+ "</div><br>"
             }
             // if(element.ID === id){
             //     let div = document.getElementById('cor');
