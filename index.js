@@ -77,7 +77,7 @@ app.get("/Inserir/:mensagem&:id",(req,res)=>{
 })
 
 app.get("/SELECIONAR",(req,res)=>{
-    MysqlConnection.query("SELECT * FROM CONVERSAS ORDER BY 1 DESC",(err,rows,fields)=>{
+    MysqlConnection.query("SELECT TOP10(*) FROM CONVERSAS ORDER BY 1 DESC",(err,rows,fields)=>{
         if(err){
             console.log(err);
         }else{
